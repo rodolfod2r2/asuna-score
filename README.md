@@ -348,7 +348,3 @@ Abra uma pull request no GitHub.
 
 ### Licença
 Este projeto está licenciado sob a Licença MIT.
-
-Claro! Abaixo está a documentação em formato Markdown para o projeto **Asuna Score**, incluindo o README, HELP e CHANGELOG com exemplos de payloads para cada módulo.
-
----
