@@ -100,47 +100,238 @@ Cada módulo possui endpoints para treinamento e previsão:
 - **K-Nearest Neighbors (KNN)**: `/knn`
 - **Análise de Componentes Principais (PCA)**: `/pca`
 
-## Exemplos de Uso
+### Módulos
 
-### Regressão Logística
+#### 1. Regressão Logística
 
-**Request**:
-```http
-POST /logistic-regression
-Content-Type: application/json
+**Descrição:** Um modelo estatístico que utiliza a função logística para modelar a probabilidade de uma variável dependente binária.
 
+**Aplicação:** Predição de probabilidade de eventos binários, como inadimplência em pagamentos.
+
+**Endpoint:** `/logistic-regression`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
 {
   "features": [1.0, 0.5, 0.3],
   "target": 1
 }
 ```
-**Reponse**:
-```
+
+**Payload de Response:**
+
+```json
 {
   "probability": 0.75
 }
 ```
-### Regressão Linear Múltipla
-**Request**:
-```http
-POST /multiple-linear-regression
-Content-Type: application/json
+
+---
+
+#### 2. Regressão Linear Múltipla
+
+**Descrição:** Extensão da regressão linear simples para modelar a relação entre múltiplas variáveis independentes e uma variável dependente contínua.
+
+**Aplicação:** Avaliação de risco de crédito com base em múltiplos fatores como renda, idade, histórico de crédito, etc.
+
+**Endpoint:** `/multiple-linear-regression`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
 {
-   "features": [0.8, 0.6, 0.4]
-}
-```
-**Reponse**:
-```
-{
-   "predictedValue": 12.5
+  "features": [0.8, 0.6, 0.4]
 }
 ```
 
-### Testes
-Para executar os testes unitários e de integração, use o Maven:
-```sh
-mvn test
+**Payload de Response:**
+
+```json
+{
+  "predictedValue": 12.5
+}
 ```
+
+---
+
+#### 3. Árvores de Decisão e Random Forest
+
+**Descrição:** Estrutura hierárquica que divide os dados em subgrupos com base em atributos selecionados, resultando em um modelo de classificação ou regressão.
+
+**Aplicação:** Classificação de clientes em categorias de risco ou previsão de comportamentos baseados em múltiplos critérios.
+
+**Endpoint:** `/decision-tree-random-forest`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
+{
+  "features": [0.7, 0.3, 0.5],
+  "target": 1
+}
+```
+
+**Payload de Response:**
+
+```json
+{
+  "classification": "high-risk"
+}
+```
+
+---
+
+#### 4. Redes Neurais Artificiais (ANN)
+
+**Descrição:** Modelos de aprendizado profundo inspirados na estrutura do cérebro humano, compostos por neurônios interconectados em camadas.
+
+**Aplicação:** Análise de grandes volumes de dados para identificar padrões complexos e fazer previsões precisas.
+
+**Endpoint:** `/neural-network`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
+{
+  "features": [0.9, 0.4, 0.6],
+  "target": 0
+}
+```
+
+**Payload de Response:**
+
+```json
+{
+  "predictedClass": "medium-risk"
+}
+```
+
+---
+
+#### 5. Máquinas de Vetores de Suporte (SVM)
+
+**Descrição:** Algoritmo que mapeia dados de entrada em um espaço dimensional superior para encontrar um hiperplano de separação ótimo entre diferentes classes.
+
+**Aplicação:** Classificação de clientes com base em características complexas e não-lineares.
+
+**Endpoint:** `/svm`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
+{
+  "features": [0.5, 0.7, 0.2],
+  "target": 1
+}
+```
+
+**Payload de Response:**
+
+```json
+{
+  "classification": "positive"
+}
+```
+
+---
+
+#### 6. Gradient Boosting Machines (GBM)
+
+**Descrição:** Técnica de aprendizado de máquina que constrói modelos de previsão em forma de árvores de decisão sequencialmente.
+
+**Aplicação:** Geração de scores baseados em dados históricos para prever comportamentos futuros.
+
+**Endpoint:** `/gbm`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
+{
+  "features": [0.6, 0.5, 0.8],
+  "target": 1
+}
+```
+
+**Payload de Response:**
+
+```json
+{
+  "predictedScore": 85.0
+}
+```
+
+---
+
+#### 7. K-Nearest Neighbors (KNN)
+
+**Descrição:** Algoritmo que classifica novos exemplos com base na similaridade com exemplos existentes, usando uma função de distância.
+
+**Aplicação:** Identificação de padrões em dados não estruturados ou semelhantes para previsão de risco.
+
+**Endpoint:** `/knn`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
+{
+  "features": [0.4, 0.6, 0.9],
+  "k": 5
+}
+```
+
+**Payload de Response:**
+
+```json
+{
+  "predictedClass": "low-risk"
+}
+```
+
+---
+
+#### 8. Análise de Componentes Principais (PCA)
+
+**Descrição:** Técnica de redução de dimensionalidade que transforma um conjunto de variáveis correlacionadas em um conjunto menor de variáveis não correlacionadas (componentes principais).
+
+
+
+**Aplicação:** Redução de complexidade em conjuntos de dados grandes antes da aplicação de outros algoritmos de geração de score.
+
+**Endpoint:** `/pca`
+
+**Método:** `POST`
+
+**Payload de Request:**
+
+```json
+{
+  "features": [0.2, 0.8, 0.5]
+}
+```
+
+**Payload de Response:**
+
+```json
+{
+  "principalComponents": [0.1, 0.6]
+}
+```
+
 ### Contribuição
 
 Contribuições são bem-vindas! Para contribuir:
@@ -157,3 +348,7 @@ Abra uma pull request no GitHub.
 
 ### Licença
 Este projeto está licenciado sob a Licença MIT.
+
+Claro! Abaixo está a documentação em formato Markdown para o projeto **Asuna Score**, incluindo o README, HELP e CHANGELOG com exemplos de payloads para cada módulo.
+
+---
